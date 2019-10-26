@@ -12,7 +12,9 @@ before_script:
 script:
 - ./vendor/bin/phpunit 
 after_success:
-  - travis_retry php vendor/bin/php-coveralls
+  -  if ! [[ $TRAVIS_PHP_VERSION =~ ^hhvm ]]; then 
+  travis_retry php vendor/bin/php-coveralls
+  fi  
 notifications:
   slack:
     secure: S/OnTLCACoEB/LHzN95rAM5xcGTKCNviVin5VawsTJZ2RMUa4J9yBmZpGpk+3u/pn83dmPZ2b2V7A3VCuuthHY67EFJ8c6QcoeGQbs9XzBYqEiwtywTwWGXWfoAZ5nFPqNRS9AgwNitPjzEJh+uiMVcYW7foroPU6lvM5PizTDI=
